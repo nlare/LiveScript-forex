@@ -1,6 +1,4 @@
-Hello World
+LiveScript, NodeJS project
 ==============
 
-This is Hello World.
-
-First NodeJS Project
+Creat websocket connection to forex using NodeJS and Livescript
