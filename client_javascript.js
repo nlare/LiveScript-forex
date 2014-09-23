@@ -1,6 +1,6 @@
 //var socket = new WebSocket("ws://localhost:8081");
 //https.globalAgent.options.secureProtocol = 'SSLv3_method'
-var socket = new WebSocket("wws://entryforex.com/stream/", null, {rejectUnauthorized: true});
+var socket = new WebSocket("wss://entryforex.com/stream/", null, {rejectUnauthorized: true});
 
 socket.onopen = function(event)   {
 	document.write("Connected!");
@@ -11,4 +11,9 @@ socket.onmessage = function(event)   {
     //console.log(event);
     document.write("<h1>Server send to you: </h1>");
     document.write(event.data);
+}
+
+socket.onclose = function(event)   {
+    //console.log(event);
+    document.write("Connection close:");
 }
