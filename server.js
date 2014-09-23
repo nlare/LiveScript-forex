@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /*var http = require('http');
 http.createServer(function (req, res) {
     console.log("Request recieved.");
@@ -15,20 +9,20 @@ http.createServer(function (req, res) {
 
 var WebSocketServer = new require('ws');
 
-// подключенные клиенты
+// connected clients
 var clients = {};
 
-/* WebSocket-сервер на порту 8081*/
+/* WebSocket-server on port 8081*/
 var webSocketServer = new WebSocketServer.Server({port: 8081});
 
 webSocketServer.on('connection', function(ws) {
 
   var id = Math.random();
   clients[id] = ws;
-  console.log("новое соединение " + id);
+  console.log("new connection: " + id);
 
   ws.on('message', function(message) {
-    console.log('получено сообщение ' + message);
+    console.log('message recieved: ' + message);
 
     for(var key in clients) {
       clients[key].send(message);
@@ -36,7 +30,7 @@ webSocketServer.on('connection', function(ws) {
   });
 
   ws.on('close', function() {
-    console.log('соединение закрыто ' + id);
+    console.log('connection is closed: ' + id);
     delete clients[id];
   });
 
